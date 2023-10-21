@@ -5,7 +5,7 @@ import { CoursesService } from 'src/Services/courses.service';
 
 @Component({
   selector: 'app-admin-course',
-  templateUrl: './admin-course.component.html',
+  templateUrl:  './admin-course.component.html',
   styleUrls: ['./admin-course.component.css']
 })
 export class AdminCourseComponent {

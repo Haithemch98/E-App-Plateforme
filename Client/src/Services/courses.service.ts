@@ -35,6 +35,15 @@ export class CoursesService {
     return this.http.post(`http://localhost:3000/courses/${classId}`, formData);
   }
 
+  // handleDelete() {
+  //   const shouldDelete = window.confirm('Are you sure you want to delete this course?');
+  //   if (shouldDelete) {
+  //     this.http.delete(`http://localhost:3000/courses/${this.courseId}`).subscribe(() => {
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  //   }
+  // }
  
 
 

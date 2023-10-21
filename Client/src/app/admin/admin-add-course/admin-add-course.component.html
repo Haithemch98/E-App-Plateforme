@@ -42,6 +42,10 @@
       <h1>{{ course.name }}</h1>
       <h3>{{ course.file }}</h3>
       <span class="pdf-icon"></span>
+      <button type="button" (click)="'isEditMode()'" class="update-button">Update</button>
+      <button type="button" (click)="'handleDelete()'" class="delete-button">Delete</button>
     </li>
   </ul>
 </div>
+
+
