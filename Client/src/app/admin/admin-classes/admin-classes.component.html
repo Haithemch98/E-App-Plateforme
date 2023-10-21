@@ -2,124 +2,109 @@
 
 <div class="px-3 py-4 flex" style="flex: 1; overflow-y: auto;">
 
-  <button
-  (click)="openModal()"
-  
-  class="text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-  type="button"
-  style="height: 150px; position: relative; left: 10%; transform: translate(-50%, -50%); margin-top:10%;"
->
-
-  Add classes
-</button>
+  <button (click)="openAddModal()"
+    class="text-white bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 shadow-lg shadow-orange-500/50 dark:shadow-lg dark:shadow-orange-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+    type="button"
+    style="height: 150px; position: relative; left: 10%; transform: translate(-50%, -50%); margin-top:10%;">
+    Add classes
+  </button>
   <!-- Search for a class input -->
 
-  <div *ngIf="isModalOpen">
-    <div style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
-      <form  style="margin-left: -600px; margin-top: -250px;" (ngSubmit)="handleSubmit()">
-      <div class="shadow sm:rounded-md sm:overflow-hidden">
-        <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-          <div class="grid grid-cols-3 gap-6">
-            <div class="col-span-3 sm:col-span-2">
-              <label
-                htmlFor="name"
-                class="block text-sm font-medium text-gray-700"
-              >
-                Add class name
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                  placeholder=" Class name"
-                  [(ngModel)]="name"
-                 
-                />
+  <div *ngIf="addModalOpen">
+    <div
+      style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
+      <form style="margin-left: -600px; margin-top: -250px;" (ngSubmit)="handleSubmit()">
+        <div class="shadow sm:rounded-md sm:overflow-hidden">
+          <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+            <div class="grid grid-cols-3 gap-6">
+              <div class="col-span-3 sm:col-span-2">
+                <label htmlFor="name" class="block text-sm font-medium text-gray-700">
+                  Add class name
+                </label>
+                <div class="mt-1 flex rounded-md shadow-sm">
+                  <input type="text" name="name" id="name"
+                    class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                    placeholder=" Class name" [(ngModel)]="name" />
+                </div>
               </div>
             </div>
+            <div class="flex items-center justify-center w-full">
+              <label htmlFor="image" class="block text-sm font-medium text-gray-700" [style.position]="'absolute'">
+                Add class image
+              </label>
+              <label htmlFor="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                  <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                  </svg>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-semibold">
+                      Click to upload
+                    </span>
+                    or drag and drop
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  </p>
+                </div>
+                <input id="dropzone-file" type="file" class="hidden" (change)="handleImageUpload($event)" />
+              </label>
+            </div>
           </div>
-          <div class="flex items-center justify-center w-full">
-            <label
-              htmlFor="image"
-              class="block text-sm font-medium text-gray-700"
-              [style.position]= "'absolute'" 
-            >
-              Add class image
-            </label>
-            <label
-              htmlFor="dropzone-file"
-              class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-            >
-              <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg
-                  class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 16"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                  />
-                </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span class="font-semibold">
-                    Click to upload
-                  </span>
-                  or drag and drop
-                </p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px)
-                </p>
-              </div>
-              <input
-                id="dropzone-file"
-                type="file"
-                class="hidden"
-                (change)="handleImageUpload($event)"
-              />
-            </label>
+          <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Add
+            </button>
+            <button (click)="closeAddModal()"
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              cancel
+            </button>
           </div>
         </div>
-        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+      </form>
+    </div>
+
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-screen-lg ml-auto" style='margin-right: 150px'>
+    <div class="class-card" *ngFor="let classInfo of classList">
+      <div
+        class="bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-1000 dark:bg-gray-800 dark:hover:bg-gray-700 p-4">
+        <img class="object-cover h-32 md:h-40 w-full rounded-t-lg cursor-pointer" [src]="classInfo.image"
+          alt="{{classInfo.name}}" [routerLink]="['/class-details', classInfo.id]">
+        <div class="p-2">
+          <h5 class="text-xl font-bold mb-2 text-gray-900 dark:text-black cursor-pointer"
+            [routerLink]="['/class-details', classInfo.id]">{{classInfo.name}}</h5>
           <button
-            type="submit"
-            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Add
+            class="bg-orange-700 hover:bg-orange-800 text-white font-medium rounded-lg text-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            (click)="toggleUpdateModal(classInfo)">
+            Update</button>
+          <button
+            class="bg-orange-700 hover:bg-orange-800 text-white font-medium rounded-lg text-xs px-3 py-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            style="margin-left: 10px;" (click)="toggleDeleteModal(classInfo)">Delete</button>
+        </div>
+      </div>
+      <app-update *ngIf="updateModalOpen" [updateModalOpen]="updateModalOpen" (toggle)="toggleUpdateModal(classInfo)"
+        (fetch)="fetchClasses()" [selectedClass]="selectedClass"></app-update>
+
+      <div class="modal-checkout " *ngIf="deleteModalOpen">
+        <div class="overlay-checkout"></div>
+        <div class="bg-gray-100 modal-content-custom-cart-checkout">
+          <h1 class="thanks">Are you sure you want to delete this class?</h1>
+          <button
+            class="close-modal-thanks focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            style="color: white; margin-top: 50px; " (click)="handleDelete(selectedClass?.id)">
+            Yes
           </button>
           <button
-          (click)="closeModal()"
-          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          cancel
-        </button>
+            class="close-modal-thanks focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            style="color: white; margin-top: 50px; margin-left: 10px;" (click)="toggleDeleteModal()">
+            No
+          </button>
         </div>
       </div>
-    </form>
-  </div>
-
-</div>
-
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-screen-lg ml-auto" style='margin-right: 150px'>
-  <div class="class-card" *ngFor="let classInfo of classList">
-    <a  [routerLink]="['/class-details', classInfo.id]">
-      <div class="bg-white border border-gray-300 rounded-lg hover:bg-gray-100 dark:border-gray-1000 dark:bg-gray-800 dark:hover:bg-gray-700 p-4">
-        <img class="object-cover h-32 md:h-40 w-full rounded-t-lg" [src]="classInfo.image" alt="{{classInfo.name}}">
-        <div class="p-2">
-          <h5 class="text-xl font-bold mb-2 text-gray-900 dark:text-black">{{classInfo.name}}</h5>
-          <button class="bg-orange-700 hover:bg-orange-800 text-white font-medium rounded-lg text-xs px-3 py-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Update</button>
-        </div>
-      </div>
-    </a>
-  </div>
-</div>
-
-
+    </div>

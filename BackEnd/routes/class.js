@@ -22,9 +22,9 @@ const { addCourseToClass } = require("../controllers/course");
 
 router.get("/getAll", getAllClasses);
 router.get("/inactiveClasses", getAllInactiveClasses)
-router.post("/", upload.single('image'),addClass );
+router.post("/", upload.single('image'), addClass);
 router.post("/:classId/:userId", addUserToClass);
-router.put("/:classId", updateClass);
+router.put("/:classId", upload.single('image'), updateClass);
 router.delete("/:classId", deleteClass);
 router.put("/accept/:classId/:userId", acceptUserRequest)
 router.put("/reject/:classId/:userId", rejectUserRequest);

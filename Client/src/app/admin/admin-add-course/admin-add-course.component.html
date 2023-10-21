@@ -5,31 +5,19 @@
     <h4 class="text-xl font-semibold mb-4">Add course to the Class</h4>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Title</label>
-      <input
-        id="name"
-        type="text"
+      <input id="name" type="text"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        placeholder="Title"
-        required
-        name="name"
-        [(ngModel)]="name"
-      />
+        placeholder="Title" required name="name" [(ngModel)]="name" />
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="file">PDF File</label>
-      <input
-        id="file"
-        type="file"
+      <input id="file" type="file"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        accept="application/pdf"
-        (change)="onFileSelected($event)"
-      />
+        accept="application/pdf" (change)="onFileSelected($event)" />
     </div>
     <div class="mb-4 flex justify-between items-center">
-      <button
-        type="submit"
-        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
+      <button type="submit"
+        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Submit
       </button>
     </div>
@@ -39,13 +27,13 @@
 <div>
   <ul class="course-list">
     <li *ngFor="let course of courses" class="course-card">
-      <h1>{{ course.name }}</h1>
-      <h3>{{ course.file }}</h3>
-      <span class="pdf-icon"></span>
-      <button type="button" (click)="'isEditMode()'" class="update-button">Update</button>
-      <button type="button" (click)="'handleDelete()'" class="delete-button">Delete</button>
+      <i [ngClass]="'fa fa-file-pdf-o'" style="font-size: 75px ;color:red; position: relative; left: -100px; top: 10px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); cursor: pointer;"
+        (click)="handleOpenPDF(course.file)"></i>
+      <h3 style="position: relative; left: 30px; top: -50px; font-weight: bold; font-size: 30px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); height: 50px; cursor: pointer;"
+        (click)="handleOpenPDF(course.file)">
+        {{course.name}}</h3>
     </li>
   </ul>
 </div>
-
-

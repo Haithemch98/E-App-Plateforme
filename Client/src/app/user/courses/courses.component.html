@@ -6,7 +6,7 @@
                 <i [ngClass]="'fa fa-file-pdf-o'" style="font-size: 75px ;color:red; position: relative; left: 50px; top: 50px;
                      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); cursor: pointer;"
                     (click)="handleOpenPDF(course.file)"></i>
-                <h3 style="position: relative; left: 130px; top: -10px; font-weight: bold; font-size: 30px;
+                <h3 style="position: relative; left: 140px; top: -10px; font-weight: bold; font-size: 30px;
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); height: 50px; cursor: pointer;"
                     (click)="handleOpenPDF(course.file)">
                     {{course.name}}</h3>
@@ -14,15 +14,3 @@
         </li>
     </ul>
 </div>
-
-
-<!-- <div>
-    <ul class="course-list">
-      <li *ngFor="let course of courses" class="course-list-item">
-        <div (click)="handleOpenPDF()" style="cursor: pointer">
-            <i class="fa fa-file-pdf-o" [ngStyle]="iconStyle"></i>
-            <h3 style="position: relative; left: 100px; top: 100px">{{ course.name }}</h3>
-          </div>
-      </li>
-    </ul>
-  </div> -->

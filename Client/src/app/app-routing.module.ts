@@ -27,10 +27,9 @@ const routes: Routes = [
   { path: 'student-classes', component: ClassesComponent, canActivate: [AuthGuard], data: { roles: ['user'] } },
   { path: 'student-courses/:id', component: CoursesComponent },
   { path: 'personal-space', component: TodoListComponent },
-  { path: 'adminUsers', component: AdminUsersComponent },
+  { path: 'adminUsers', component: AdminNavbarComponent },
   { path: 'admin-classes', component: AdminClassesComponent },
-  {path : 'class-details/:classId' , component:AdminAddCourseComponent}
-
+  { path: 'class-details/:classId', component: AdminAddCourseComponent }
 ];
 
 @NgModule({

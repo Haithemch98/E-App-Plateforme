@@ -39,7 +39,7 @@ export class AuthService {
       console.log(response.user);
       if (response.user.role === 'admin') {
         console.log('Hello admin');
-        this.router.navigate(['adminUsers']);
+        this.router.navigate(['admin-classes']);
       } else {
         console.log('Hello from user');
         this.router.navigate(['student-home']);

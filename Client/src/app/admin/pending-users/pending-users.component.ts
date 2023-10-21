@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../user'
 
 
+
 @Component({
   selector: 'app-pending-users',
   templateUrl: './pending-users.component.html',

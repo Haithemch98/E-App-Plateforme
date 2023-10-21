@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AdminUsersService } from '../../../Services/admin-users.service';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -10,9 +13,13 @@ import { AdminUsersService } from '../../../Services/admin-users.service';
 })
 export class AdminUsersComponent {
   // Property to store pending users
+  @Output() refresh: EventEmitter<any> = new EventEmitter();
+
+
   pendingUsers: any[] = [];
 
-  constructor(private http: HttpClient, private AdminUsersService: AdminUsersService) { }
+  constructor(private http: HttpClient, private AdminUsersService: AdminUsersService, private router: Router) { }
+
 
 
 
@@ -48,6 +55,8 @@ export class AdminUsersComponent {
       .subscribe(
         (response) => {
           this.getStudentsPendingClasses()
+          this.refresh.emit()
+
         },
         (error) => {
           console.log(error)
@@ -62,6 +71,7 @@ export class AdminUsersComponent {
         (response) => {
           console.log('rejected')
           this.getStudentsPendingClasses()
+          this.refresh.emit()
         },
         (error) => {
           console.log(error)

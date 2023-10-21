@@ -1,10 +1,12 @@
 <tr class="border-b hover:bg-orange-100 bg-gray-100">
-    <td class="p-3 px-5">{{user.info.email}}</td>
+    <td class="p-3 px-5" style="width: 600px">{{user.info.email}}</td>
     <td class="p-3 px-5">{{user.userClass.name}}</td>
     <td class="p-3 px-5 flex justify-end">
-        <button type="button" class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded"
+        <button type="button"
+            class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
             (click)="triggerAccept()">Accept</button>
-        <button type="button" class="text-sm bg-red-500 hover-bg-red-700 text-white py-1 px-2 rounded"
+        <button type="button"
+            class="text-sm bg-red-500 hover-bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
             (click)="triggerReject()">Reject</button>
     </td>
 </tr>
